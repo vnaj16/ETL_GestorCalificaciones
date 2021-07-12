@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "ETL_GestorCalificaciones", "ETL_GestorCalificaciones\ETL_GestorCalificaciones.dtproj", "{3D388B3A-BF1C-489C-9F60-5CA34B4564DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D388B3A-BF1C-489C-9F60-5CA34B4564DA}.Development|Default.ActiveCfg = Development
+		{3D388B3A-BF1C-489C-9F60-5CA34B4564DA}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91B71C26-17EC-47DB-B778-A937E166FD66}
+	EndGlobalSection
+EndGlobal
