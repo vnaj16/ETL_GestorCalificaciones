@@ -11,8 +11,8 @@
   DTS:LocaleID="10250"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{D5BE1D7E-58D4-4CF8-A4AF-48456063822B}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{16C7271F-D4B2-4623-88F7-A30AC11D1BB6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2125,7 +2125,7 @@ where [refTable].[descripcion] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{A58070B5-D8B8-4848-86B9-626CDA6E2546}"
-          SQLTask:SqlStatementSource="DROP TABLE CursoEvaluacion&#xA;DROP TABLE Curso&#xA;DROP TABLE Ciclo&#xA;DROP TABLE Alumno&#xA;DROP TABLE Evaluacion&#xA;&#xA;CREATE TABLE [Alumno] (&#xA;  [idAlumno] int primary key identity(1,1),&#xA;  [nombre] varchar(30),&#xA;  [universidad] varchar(50),&#xA;  [promedioAcumulado] float&#xA;);&#xA;&#xA;CREATE TABLE [Ciclo] (&#xA;  [idCiclo] int primary key identity(1,1),&#xA;  [periodo] varchar(10),&#xA;  [nCursos] int,&#xA;  [promedioFinal] float,&#xA;  [promedioBeca] float,&#xA;  [idAlumno] int FOREIGN KEY REFERENCES Alumno(idAlumno)&#xA;);&#xA;&#xA;CREATE TABLE [Curso] (&#xA;  [idCurso] int primary key identity(1,1),&#xA;  [codigo] varchar(10),&#xA;  [nombre] varchar(80),&#xA;  [creditos] int,&#xA;  [nCampos] int,&#xA;  [promedioTemporal] float,&#xA;  [promedioFinal] float,&#xA;  [vez] int,&#xA;  [idCiclo] int FOREIGN KEY REFERENCES Ciclo(idCiclo)&#xA;);&#xA;&#xA;CREATE TABLE [Evaluacion] (&#xA;  [idEvaluacion] int primary key identity(1,1),&#xA;  [tipo] varchar(5),&#xA;  [numero] int,&#xA;  [descripcion] varchar(30)&#xA;);&#xA;&#xA;CREATE TABLE [CursoEvaluacion] (&#xA;  [idCurso] int FOREIGN KEY REFERENCES Curso(idCurso),&#xA;  [idEvaluacion] int FOREIGN KEY REFERENCES Evaluacion(idEvaluacion), &#xA;  [peso] float,&#xA;  [nota] float,&#xA;  [rellenado] bit&#xA;);&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DROP TABLE CursoEvaluacion&#xA;DROP TABLE Curso&#xA;DROP TABLE Ciclo&#xA;DROP TABLE Alumno&#xA;DROP TABLE Evaluacion&#xA;&#xA;CREATE TABLE [Alumno] (&#xA;  [idAlumno] int primary key identity(1,1),&#xA;  [nombre] varchar(30),&#xA;  [universidad] varchar(50),&#xA;  [promedioAcumulado] float&#xA;);&#xA;&#xA;CREATE TABLE [Ciclo] (&#xA;  [idCiclo] int primary key identity(1,1),&#xA;  [periodo] varchar(10),&#xA;  [nCursos] int,&#xA;  [promedioFinal] float,&#xA;  [promedioBeca] float,&#xA;  [idAlumno] int FOREIGN KEY REFERENCES Alumno(idAlumno)&#xA;);&#xA;&#xA;CREATE TABLE [Curso] (&#xA;  [idCurso] int primary key identity(1,1),&#xA;  [codigo] varchar(10),&#xA;  [nombre] varchar(80),&#xA;  [creditos] int,&#xA;  [nCampos] int,&#xA;  [promedioTemporal] float,&#xA;  [promedioFinal] float,&#xA;  [vez] int,&#xA;  [idCiclo] int FOREIGN KEY REFERENCES Ciclo(idCiclo)&#xA;);&#xA;&#xA;CREATE TABLE [Evaluacion] (&#xA;  [idEvaluacion] int primary key identity(1,1),&#xA;  [tipo] varchar(5),&#xA;  [numero] int,&#xA;  [descripcion] varchar(30)&#xA;);&#xA;&#xA;CREATE TABLE [CursoEvaluacion] (&#xA;  idCursoEvaluacion int primary key identity(1,1),&#xA;  [idCurso] int FOREIGN KEY REFERENCES Curso(idCurso),&#xA;  [idEvaluacion] int FOREIGN KEY REFERENCES Evaluacion(idEvaluacion), &#xA;  [peso] float,&#xA;  [nota] float,&#xA;  [rellenado] bit&#xA;);&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2188,6 +2188,18 @@ where [refTable].[descripcion] = ?</property>
           Id="Package\Carga Ciclo"
           TopLeft="364,167" />
         <NodeLayout
+          Size="136,42"
+          Id="Package\Carga Curso"
+          TopLeft="586,172" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Carga CursoEvaluacion"
+          TopLeft="693,294" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Carga Evaluacion"
+          TopLeft="799,171" />
+        <NodeLayout
           Size="170,42"
           Id="Package\Tarea Ejecutar SQL"
           TopLeft="508,75" />
@@ -2225,10 +2237,6 @@ where [refTable].[descripcion] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="136,42"
-          Id="Package\Carga Curso"
-          TopLeft="586,172" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
           TopLeft="620,117">
@@ -2263,10 +2271,6 @@ where [refTable].[descripcion] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Carga Evaluacion"
-          TopLeft="799,171" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
           TopLeft="633.5,117">
@@ -2301,10 +2305,6 @@ where [refTable].[descripcion] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Carga CursoEvaluacion"
-          TopLeft="693,294" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
           TopLeft="654,214">
@@ -2547,7 +2547,7 @@ where [refTable].[descripcion] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga Curso\Curso Origen">
+    design-time-name="Package\Carga Curso\Curso Destino">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2560,7 +2560,7 @@ where [refTable].[descripcion] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga Curso\Curso Destino">
+    design-time-name="Package\Carga Curso\Curso Origen">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2578,7 +2578,7 @@ where [refTable].[descripcion] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2588,69 +2588,10 @@ where [refTable].[descripcion] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Carga Evaluacion">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="164,42"
-          Id="Package\Carga Evaluacion\Evaluacion Origen"
-          TopLeft="664,83" />
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Carga Evaluacion\Evaluacion Destino"
-          TopLeft="668,213" />
-        <EdgeLayout
-          Id="Package\Carga Evaluacion.Paths[OLE DB Source Output]"
-          TopLeft="749,125">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,88"
-              Start="0,0"
-              End="0,80.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,80.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Carga Evaluacion\Evaluacion Origen">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Carga Evaluacion\Evaluacion Destino">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -2761,8 +2702,23 @@ where [refTable].[descripcion] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga CursoEvaluacion\CursoEvaluacion Origen">
+    design-time-name="Package\Carga CursoEvaluacion\Lookup Curso">
     <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Curso]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -2782,12 +2738,20 @@ where [refTable].[descripcion] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Carga CursoEvaluacion\CursoEvaluacion Origen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Carga CursoEvaluacion\Lookup Evaluacion">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2797,31 +2761,67 @@ where [refTable].[descripcion] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Carga Evaluacion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Carga Evaluacion\Evaluacion Origen"
+          TopLeft="664,83" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Carga Evaluacion\Evaluacion Destino"
+          TopLeft="668,213" />
+        <EdgeLayout
+          Id="Package\Carga Evaluacion.Paths[OLE DB Source Output]"
+          TopLeft="749,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,88"
+              Start="0,0"
+              End="0,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga CursoEvaluacion\Lookup Curso">
+    design-time-name="Package\Carga Evaluacion\Evaluacion Destino">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Curso]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q2:string">Table</Value>
       </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Evaluacion\Evaluacion Origen">
+    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
